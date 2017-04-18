@@ -1,4 +1,4 @@
-#salt dashboard
+# salt dashboard
 
 
 salt-dashboard is based on salt-client(so deploy this on salt master server),and use mysql returner as result backend
@@ -8,7 +8,7 @@ salt-dashboard is based on salt-client(so deploy this on salt master server),and
 
 
 
-#requirement
+# requirement
 
 <pre>
 pip install django mysql-python
@@ -16,7 +16,7 @@ pip install django mysql-python
 
 
 
-#1:returner:
+# 1:returner:
 
 
 ## salt [mysql returner ](http://docs.saltstack.com/ref/returners/all/salt.returners.mysql.html#module-salt.returners.mysql "Title")
@@ -33,7 +33,7 @@ grant all on salt.* to 'salt'@'localhost' identified by 'salt';
 
 there is a bug when schedule use mysql return,fixed by this [schedule return by mysql ](https://github.com/halfss/salt/commit/3f5805f7b38fc867a3d12b8c36efd023b4957792)
 
-##salt minion config:
+## salt minion config:
 <pre>
 vim /etc/salt/minion
 mysql.host: 'localhost'
@@ -43,13 +43,13 @@ mysql.db: 'salt'
 mysql.port: 3306
 </pre>
 
-##salt-dashboard sync db 
+## salt-dashboard sync db 
 <pre>
 cd salt-dashboard/
 python manage.py syncdb
 </pre>
 
-#2:scheduler:
+# 2:scheduler:
 [[<pre>]]
 /srv/pillar/top.sls
 <pre>
@@ -72,7 +72,7 @@ then waiting minions update scheduler info by himself or run this command:
 salt '*' saltutil.refresh_pillar
 </pre>
 
-#3:salt-dashboard
+# 3:salt-dashboard
   this dashboard is based on django+bootstrap+amcharts
 
   demo screen like this:
